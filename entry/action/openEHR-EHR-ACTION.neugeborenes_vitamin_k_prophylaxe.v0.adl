@@ -1,0 +1,96 @@
+﻿archetype (adl_version=1.4; uid=c1caaf28-e087-402b-a2aa-e30ca0d51ab3)
+	openEHR-EHR-ACTION.neugeborenes_vitamin_k_prophylaxe.v0
+
+concept
+	[at0000]	-- Neugeborenes_Vitamin_K_Prophylaxe
+language
+	original_language = <[ISO_639-1::de]>
+description
+	original_author = <
+		["name"] = <"Birger Haarbrandt">
+		["organisation"] = <"HiGHmed">
+		["email"] = <"birger.haarbrandt@plri.de">
+		["date"] = <"2019-06-11">
+	>
+	details = <
+		["de"] = <
+			language = <[ISO_639-1::de]>
+			purpose = <"Verabreichung einer Vitamin_K_Propyhlaxe">
+			use = <"">
+			misuse = <"">
+			copyright = <"© HiGHmed">
+		>
+	>
+	lifecycle_state = <"in_development">
+	other_contributors = <>
+	other_details = <
+		["licence"] = <"This work is licensed under the Creative Commons Attribution-ShareAlike 3.0 License. To view a copy of this license, visit http://creativecommons.org/licenses/by-sa/3.0/.">
+		["custodian_organisation"] = <"HiGHmed">
+		["original_namespace"] = <"org.highmed">
+		["custodian_namespace"] = <"org.highmed">
+		["original_publisher"] = <"HiGHmed">
+		["MD5-CAM-1.0.1"] = <"3E8FE8CD68D4CA990653A7F572748BD5">
+		["build_uid"] = <"b9b91ab8-047a-486a-b7a2-e69927d508cd">
+		["revision"] = <"0.0.1-alpha">
+	>
+
+definition
+	ACTION[at0000] matches {	-- Neugeborenes_Vitamin_K_Prophylaxe
+		description matches {
+			ITEM_TREE[at0001] matches {	-- ItemTree
+				items cardinality matches {0..*; unordered} matches {
+					ELEMENT[at0003] occurrences matches {0..1} matches {	-- Vitamin-K-Prophylaxe
+						value matches {
+							DV_TEXT matches {*}
+						}
+					}
+					ELEMENT[at0005] occurrences matches {0..1} matches {	-- orale Dosis
+						value matches {
+							C_DV_QUANTITY <
+								property = <[openehr::124]>
+								list = <
+									["1"] = <
+										units = <"mg">
+									>
+								>
+							>
+						}
+					}
+					ELEMENT[at0006] occurrences matches {0..1} matches {	-- Kommentar
+						value matches {
+							DV_TEXT matches {*}
+						}
+					}
+				}
+			}
+		}
+	}
+
+
+ontology
+	term_definitions = <
+		["de"] = <
+			items = <
+				["at0000"] = <
+					text = <"Neugeborenes_Vitamin_K_Prophylaxe">
+					description = <"Neugeborenes_Vitamin_K_Prophylaxe">
+				>
+				["at0001"] = <
+					text = <"ItemTree">
+					description = <"@ internal @">
+				>
+				["at0003"] = <
+					text = <"Vitamin-K-Prophylaxe">
+					description = <"*">
+				>
+				["at0005"] = <
+					text = <"orale Dosis">
+					description = <"*">
+				>
+				["at0006"] = <
+					text = <"Kommentar">
+					description = <"*">
+				>
+			>
+		>
+	>

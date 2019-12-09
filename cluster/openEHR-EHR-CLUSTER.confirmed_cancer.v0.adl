@@ -1,0 +1,271 @@
+﻿archetype (adl_version=1.4; uid=edd32de0-6c61-45bb-a392-8f7a1f0e4160)
+	openEHR-EHR-CLUSTER.confirmed_cancer.v0
+
+concept
+	[at0000]	-- Tumor_Diagnosesicherung
+language
+	original_language = <[ISO_639-1::de]>
+description
+	original_author = <
+		["name"] = <"Simon Schumacher">
+		["organisation"] = <"HiGHmed">
+		["email"] = <"sschuma9@uni-koeln.de">
+		["date"] = <"2019-06-03">
+	>
+	details = <
+		["de"] = <
+			language = <[ISO_639-1::de]>
+			purpose = <"Dient der Dokumentation der Diagnosesicherheit durch die Beschreibung der Methoden und den Informationen, auf welchen die Krebsdiagnose basiert.">
+			use = <"Zur Dokumentation der Diagnosesicherheit durch die Beschreibung der Methoden und den Informationen, auf welchen die Krebsdiagnose basiert. Dieser Cluster Archetyp wurde speziell für den SLOT data.spezifische_details des Archetypen EVALUATION.problem_diagnosis.v0 erstellt. 
+
+Dieser Archetyp soll Kliniker dabei unterstützten, eine Krebsdiagnose besser beurteilen zu können. Dies ist besonderes wichtig, wenn Kliniker Informationen über einen Patienten erhalten, die die Klinker selber nicht erhoben haben. Zum Beispiel, wenn ein Kliniker einen Patient eines anderen Arztes in einem Tumorboard begutachten soll.
+
+Falls mehrere Methoden verwendet wurden, oder mehrere Informationsquellen bekannt sind, kann dieser Archetyp innerhalb eines Kontexts, mehrfach verwendet werden. ">
+			keywords = <"Tumor", "Diagnosesicherung", "Diagnose", "Diagnosesicherheit", "Krebs">
+			misuse = <"Dieser Archetyp ist ausschließlich für die Bestimmung der Diagnosesicherheit von Krebsdiagnosen konzipiert worden und sollte nicht zur Beschreibung der Diagnosesicherheit von anderen Krankheiten verwendet werden.">
+			copyright = <"© HiGHmed">
+		>
+	>
+	lifecycle_state = <"in_development">
+	other_contributors = <"Natalia Strauch (MHH, HiGHmed)", "Christina Jäger-Schmidt (Universität Heidelberg, HiGHmed)", "Aurelie Tomczak (Universität Heidelberg, HiGHmed)">
+	other_details = <
+		["licence"] = <"This work is licensed under the Creative Commons Attribution-ShareAlike 3.0 License. To view a copy of this license, visit http://creativecommons.org/licenses/by-sa/3.0/.">
+		["custodian_organisation"] = <"HiGHmed">
+		["references"] = <"\"Datenkatalog mit Merkmalsausprägungen nach ADT/GEKID Basisdatensatz 2.0.0\" der Arbeitsgemeinschaft Deutscher Tumorzentren e.V. (https://www.tumorzentren.de/onkol-basisdatensatz.html)
+\"Diagnostic Confirmation\" nach dem Standard der North American Association of Central Cancer Registries (http://ncdbpuf.facs.org/content/diagnostic-confirmation).
+">
+		["original_namespace"] = <"org.highmed">
+		["original_publisher"] = <"HiGHmed">
+		["custodian_namespace"] = <"org.highmed">
+		["MD5-CAM-1.0.1"] = <"09DC35338D8D4D6B99836144E34139D4">
+		["build_uid"] = <"cece8b68-4f74-47a0-9aa8-6a682d5cae8e">
+		["revision"] = <"0.0.1-alpha">
+	>
+
+definition
+	CLUSTER[at0000] matches {    -- Tumor_Diagnosesicherung
+		name matches {
+			DV_CODED_TEXT matches {
+				defining_code matches {
+					[local::at0001]
+				}
+			}
+		}
+		items cardinality matches {1..*; unordered} matches {
+			ELEMENT[at0013] occurrences matches {0..1} matches {    -- Herkunft der Probe
+				value matches {
+					DV_CODED_TEXT matches {
+						defining_code matches {
+							[local::
+							at0014,    -- Primärtumor
+							at0015,    -- Metastase
+							at0016]    -- Unbekannt
+						}
+					}
+					DV_TEXT matches {*}
+				}
+			}
+			CLUSTER[at0017] matches {    -- Diagnosesicherung
+				items cardinality matches {1..*; unordered} matches {
+					ELEMENT[at0029] occurrences matches {0..1} matches {    -- Klinisches Verfahren
+						value matches {
+							DV_CODED_TEXT matches {
+								defining_code matches {
+									[local::
+									at0035,    -- Direkte Visualisierung
+									at0036,    -- Ausschließlich klinische Diagnose
+									at0049]    -- Palpation
+								}
+							}
+						}
+					}
+					ELEMENT[at0028] occurrences matches {0..1} matches {    -- Bildgebende Verfahren
+						value matches {
+							DV_CODED_TEXT matches {
+								defining_code matches {
+									[local::
+									at0039,    -- MRT
+									at0040,    -- CT
+									at0041,    -- PET-CT
+									at0042,    -- Sonografie
+									at0046,    -- Nuklearmedizinische Bildgebung
+									at0050]    -- Röntgendiagnostik
+								}
+							}
+						}
+					}
+					ELEMENT[at0027] occurrences matches {0..1} matches {    -- Mikroskopisches Verfahren
+						value matches {
+							DV_CODED_TEXT matches {
+								defining_code matches {
+									[local::
+									at0030,    -- Histologisch
+									at0031,    -- Zytologisch
+									at0032,    -- Genetischer Test
+									at0033,    -- Immunophänotypisierung
+									at0034,    -- Mikroskopische Bestätigung mit unbekannter Methode
+									at0051]    -- Labortest oder Labormarker
+								}
+							}
+						}
+					}
+					ELEMENT[at0044] occurrences matches {0..1} matches {    -- Anderes Verfahren
+						value matches {
+							DV_TEXT matches {*}
+						}
+					}
+					ELEMENT[at0045] occurrences matches {0..1} matches {    -- Unbekannt
+						value matches {
+							DV_TEXT matches {*}
+						}
+					}
+				}
+			}
+			ELEMENT[at0012] occurrences matches {0..1} matches {    -- Kommentar
+				value matches {
+					DV_TEXT matches {*}
+				}
+			}
+		}
+	}
+
+
+ontology
+	terminologies_available = <"LOINC", ...>
+	term_definitions = <
+		["de"] = <
+			items = <
+				["at0000"] = <
+					text = <"Tumor_Diagnosesicherung">
+					description = <"Beschreibt die höchste erreichte Diagnosesicherheit zum Zeitpunkt der Krebsdiagnose.">
+				>
+				["at0001"] = <
+					text = <"">
+					description = <"*">
+				>
+				["at0012"] = <
+					text = <"Kommentar">
+					description = <"Weitere Informationen über die Erhebung der Diagnosesicherheit.">
+					comment = <"Zum Beispiel können Anmerkungen über Qualität der Diagnosesicherheit in diesem Datenelement festgehalten werden.">
+				>
+				["at0013"] = <
+					text = <"Herkunft der Probe">
+					description = <"Zur Dokumentation der Herkunft der Probe.
+Beschreibt, ob sich die Diagnosesicherung auf den Primärtumor oder auf eine Metastase bezieht.">
+					comment = <"Zum Beispiel: Primärtumor">
+				>
+				["at0014"] = <
+					text = <"Primärtumor">
+					description = <"Die Probe wurde dem Primärtumor entnommen.">
+				>
+				["at0015"] = <
+					text = <"Metastase">
+					description = <"Die Probe wurde einem Sekundärtumor (Metastase) entnommen.">
+				>
+				["at0016"] = <
+					text = <"Unbekannt">
+					description = <"Die Herkunft der Probe ist unbekannt.">
+				>
+				["at0017"] = <
+					text = <"Diagnosesicherung">
+					description = <"Zur Dokumentation der Methode, des Verfahrens oder der Information, auf welcher die Diagnosesicherheit beruht.">
+					comment = <"Zum Beispiel: klinisches- oder bildgebendes Verfahren">
+				>
+				["at0027"] = <
+					text = <"Mikroskopisches Verfahren">
+					description = <"Die Diagnosesicherheit beruht auf einer mikroskopischen Identifikation des Tumors.">
+				>
+				["at0028"] = <
+					text = <"Bildgebende Verfahren">
+					description = <"Die Malignität wurde mit Hilfe eines bildgebenden Verfahrens durch den Kliniker berichtet.">
+				>
+				["at0029"] = <
+					text = <"Klinisches Verfahren">
+					description = <"Es wurde weder ein mikroskopisches, noch ein bildgebendes Verfahren für die Diagnose genutzt.">
+				>
+				["at0030"] = <
+					text = <"Histologisch">
+					description = <"Histologische Bestätigung der Tumordiagnose. Gewebe wurde histologisch analysiert.">
+				>
+				["at0031"] = <
+					text = <"Zytologisch">
+					description = <"Zytologisch Bestätigung der Tumordiagnose. Zellen wurden in Flüssigkeit analysiert. Es wurde kein Gewebe mikroskopisch analysiert.">
+				>
+				["at0032"] = <
+					text = <"Genetischer Test">
+					description = <"Die Tumordiagnose wurde durch einen genetischen Test gesichert.">
+				>
+				["at0033"] = <
+					text = <"Immunophänotypisierung">
+					description = <"Die Tumordiagnose wurde durch eine Immunphänotypisierung gesichert.">
+				>
+				["at0034"] = <
+					text = <"Mikroskopische Bestätigung mit unbekannter Methode">
+					description = <"Die Tumordiagnose wurde mit einer unbekannten Methode mikroskopisch bestätigt.">
+				>
+				["at0035"] = <
+					text = <"Direkte Visualisierung">
+					description = <"Der Tumor wurde während eines chirurgischen oder endoskopischen Eingriffes identifiziert. Es gab keine mikroskopische Bestätigung des Tumors.">
+				>
+				["at0036"] = <
+					text = <"Ausschließlich klinische Diagnose">
+					description = <"Die Malignität wurde von einem Arzt in einer Krankenakte berichtet.">
+				>
+				["at0039"] = <
+					text = <"MRT">
+					description = <"Tumordiagnose durch Ma­gnet­re­so­nanz­to­mo­gra­phie.">
+				>
+				["at0040"] = <
+					text = <"CT">
+					description = <"Tumordiagnose durch Computertomographie.">
+				>
+				["at0041"] = <
+					text = <"PET-CT">
+					description = <"Tumordiagnose durch Positronen-Emissions-Tomographie kombiniert mit Computertomographie.">
+				>
+				["at0042"] = <
+					text = <"Sonografie">
+					description = <"Tumordiagnose durch Sonografie.">
+				>
+				["at0044"] = <
+					text = <"Anderes Verfahren">
+					description = <"Die Diagnosesicherheit beruht auf einem alternativen Verfahren, welches in den vorherigen Elementen nicht dargestellt wurde.">
+				>
+				["at0045"] = <
+					text = <"Unbekannt">
+					description = <"In der Krankenakte wurde zwar die Diagnose über die Krebserkrankung festgehalten, jedoch gibt es keine Informationen über die Methode die zur Diagnose führte.">
+				>
+				["at0046"] = <
+					text = <"Nuklearmedizinische Bildgebung">
+					description = <"Tumordiagnose durch Nuklearmedizinische Bildgebung. Schließt zum Beispiel PET oder SPECT ein.">
+				>
+				["at0049"] = <
+					text = <"Palpation">
+					description = <"Der Tumor wurde durch Abtasten des Körpers identifiziert.">
+				>
+				["at0050"] = <
+					text = <"Röntgendiagnostik">
+					description = <"Tumordiagnose durch Röntgenstrahlung.">
+				>
+				["at0051"] = <
+					text = <"Labortest oder Labormarker">
+					description = <"Die Krebsdiagnose basiert auf einem Labortest, oder einer Analyse eines Labormarkers (z.B. Alpha-fetoprotein für Leberkrebs).">
+				>
+			>
+		>
+	>
+	term_bindings = <
+		["LOINC"] = <
+			items = <
+				["at0000"] = <[LOINC(2.29)::21861-0]>
+				["at0030"] = <[LOINC::LA4674-3]>
+				["at0031"] = <[LOINC::LA4675-0]>
+				["at0028"] = <[LOINC::LA4383-1]>
+				["at0045"] = <[LOINC::LA4489-6]>
+				["at0035"] = <[LOINC::LA4199-1]>
+				["at0029"] = <[LOINC::LA4163-7]>
+				["at0034"] = <[LOINC::LA4610-7]>
+				["at0051"] = <[LOINC::LA4673-5]>
+			>
+		>
+	>

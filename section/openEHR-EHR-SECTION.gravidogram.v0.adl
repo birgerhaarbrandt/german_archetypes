@@ -1,0 +1,154 @@
+﻿archetype (adl_version=1.4; uid=e61dc329-3b9e-4df7-b7d1-2dd43b90abf1)
+	openEHR-EHR-SECTION.gravidogram.v0
+
+concept
+	[at0000]	-- Gravidogram
+language
+	original_language = <[ISO_639-1::de]>
+	translations = <
+		["en"] = <
+			language = <[ISO_639-1::en]>
+			author = <
+				["name"] = <"?">
+			>
+		>
+	>
+description
+	original_author = <
+	>
+	details = <
+		["de"] = <
+			language = <[ISO_639-1::de]>
+			purpose = <"">
+			use = <"">
+			misuse = <"">
+			copyright = <"© *(de), HiGHmed, HiGHmed">
+		>
+		["en"] = <
+			language = <[ISO_639-1::en]>
+			purpose = <"*(de)">
+			use = <"*(de)">
+			misuse = <"*(de)">
+			copyright = <"© *(de), HiGHmed, HiGHmed">
+		>
+	>
+	lifecycle_state = <"in_development">
+	other_contributors = <>
+	other_details = <
+		["licence"] = <"This work is licensed under the Creative Commons Attribution-ShareAlike 3.0 License. To view a copy of this license, visit http://creativecommons.org/licenses/by-sa/3.0/.">
+		["custodian_organisation"] = <"HiGHmed">
+		["original_namespace"] = <"org.highmed">
+		["original_publisher"] = <"HiGHmed">
+		["custodian_namespace"] = <"org.highmed">
+		["MD5-CAM-1.0.1"] = <"6E85979D54701C9CAA4A3297537AAFDE">
+		["build_uid"] = <"98a1f15c-528b-4b1c-8ef9-7cfbc9796832">
+		["revision"] = <"0.0.1-alpha">
+	>
+
+definition
+	SECTION[at0000] matches {    -- Gravidogram
+		items cardinality matches {1..*; unordered} matches {
+			allow_archetype ADMIN_ENTRY[at0013] occurrences matches {0..*} matches {    -- Schwangerschaftsuntersuchung
+				include
+					archetype_id/value matches {/.*/}
+			}
+			allow_archetype OBSERVATION[at0003] occurrences matches {0..*} matches {    -- Blutdruck
+				include
+					archetype_id/value matches {/.*/}
+			}
+			allow_archetype OBSERVATION[at0004] occurrences matches {0..*} matches {    -- Herztöne
+				include
+					archetype_id/value matches {/.*/}
+			}
+			allow_archetype OBSERVATION[at0006] occurrences matches {0..*} matches {    -- Hemoglobin
+				include
+					archetype_id/value matches {/openEHR-EHR-OBSERVATION\.*|openEHR-EHR-OBSERVATION\.lab_test\.v1/}
+			}
+			allow_archetype OBSERVATION[at0007] occurrences matches {0..*} matches {    -- Vaginale Untersuchung
+				include
+					archetype_id/value matches {/openEHR-EHR-OBSERVATION\.*|openEHR-EHR-OBSERVATION\.exam\.v1/}
+			}
+			allow_archetype OBSERVATION[at0002] occurrences matches {0..*} matches {    -- Körpergewicht
+				include
+					archetype_id/value matches {/.*/}
+			}
+			SECTION[at0014] occurrences matches {0..1} matches {*}    -- Sonstiges/Therapien/Maßnahmen
+		}
+	}
+
+
+ontology
+	term_definitions = <
+		["de"] = <
+			items = <
+				["at0000"] = <
+					text = <"Gravidogram">
+					description = <"unknown">
+				>
+				["at0002"] = <
+					text = <"Körpergewicht">
+					description = <"**(de)">
+				>
+				["at0003"] = <
+					text = <"Blutdruck">
+					description = <"**(de)">
+				>
+				["at0004"] = <
+					text = <"Herztöne">
+					description = <"**(de)">
+				>
+				["at0006"] = <
+					text = <"Hemoglobin">
+					description = <"*">
+				>
+				["at0007"] = <
+					text = <"Vaginale Untersuchung">
+					description = <"*">
+				>
+				["at0013"] = <
+					text = <"Schwangerschaftsuntersuchung">
+					description = <"*">
+				>
+				["at0014"] = <
+					text = <"Sonstiges/Therapien/Maßnahmen">
+					description = <"*">
+				>
+			>
+		>
+		["en"] = <
+			items = <
+				["at0000"] = <
+					text = <"Gravidogram">
+					description = <"*">
+				>
+				["at0002"] = <
+					text = <"Body Weight">
+					description = <"*">
+				>
+				["at0003"] = <
+					text = <"Blood Pressure">
+					description = <"*">
+				>
+				["at0004"] = <
+					text = <"Heart Sounds">
+					description = <"*">
+				>
+				["at0006"] = <
+					text = <"Hemoglobin">
+					description = <"*">
+				>
+				["at0007"] = <
+					text = <"Examination of vagina">
+					description = <"*">
+				>
+				["at0013"] = <
+					text = <"*Schwangerschaftsuntersuchung(de)">
+					description = <"**(de)">
+				>
+				["at0014"] = <
+					text = <"*Sonstiges/Therapien/Maßnahmen(de)">
+					description = <"**(de)">
+				>
+			>
+		>
+	>

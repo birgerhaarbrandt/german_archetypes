@@ -1,0 +1,128 @@
+﻿archetype (adl_version=1.4; uid=2ea2d165-ef6e-4eee-a871-3c1f2ce08581)
+	openEHR-EHR-ADMIN_ENTRY.schwangerschaftsuntersuchung.v0
+
+concept
+	[at0000]	-- Schwangerschaftsuntersuchung
+language
+	original_language = <[ISO_639-1::de]>
+	translations = <
+		["en"] = <
+			language = <[ISO_639-1::en]>
+			author = <
+				["name"] = <"?">
+			>
+		>
+	>
+description
+	original_author = <
+		["name"] = <"Birger Haarbrandt">
+		["organisation"] = <"HiGHmed">
+		["email"] = <"birger.haarbrandt@plri.de">
+		["date"] = <"2019-06-08">
+	>
+	details = <
+		["de"] = <
+			language = <[ISO_639-1::de]>
+			purpose = <"Administrative Daten zur Schwangerschaftsuntersuchung">
+			use = <"">
+			misuse = <"">
+			copyright = <"© HiGHmed">
+		>
+		["en"] = <
+			language = <[ISO_639-1::en]>
+			purpose = <"Encounter in a pregnancy">
+			use = <"">
+			misuse = <"">
+			copyright = <"© HiGHmed">
+		>
+	>
+	lifecycle_state = <"in_development">
+	other_contributors = <>
+	other_details = <
+		["licence"] = <"This work is licensed under the Creative Commons Attribution-ShareAlike 3.0 License. To view a copy of this license, visit http://creativecommons.org/licenses/by-sa/3.0/.">
+		["custodian_organisation"] = <"HiGHmed">
+		["original_namespace"] = <"org.highmed">
+		["original_publisher"] = <"HiGHmed">
+		["custodian_namespace"] = <"org.highmed">
+		["MD5-CAM-1.0.1"] = <"C0504F7E4C0B68172AC06FD28810021D">
+		["build_uid"] = <"ec455a67-ef12-4232-a97c-1bd94e83b4c9">
+		["revision"] = <"0.0.1-alpha">
+	>
+
+definition
+	ADMIN_ENTRY[at0000] matches {	-- Pregnancy Check-up
+		data matches {
+			ITEM_TREE[at0001] matches {	-- ItemTree
+				items cardinality matches {0..*; unordered} matches {
+					ELEMENT[at0002] occurrences matches {0..1} matches {	-- *Datum der Untersuchung (de)
+						value matches {
+							DV_DATE_TIME matches {*}
+						}
+					}
+					ELEMENT[at0003] occurrences matches {0..1} matches {	-- *Schwangerschaftswoche (de)
+						value matches {
+							DV_COUNT matches {*}
+						}
+					}
+					ELEMENT[at0004] occurrences matches {0..1} matches {	-- *Korrigierte Schwangerschafswoche (de)
+						value matches {
+							DV_COUNT matches {*}
+						}
+					}
+				}
+			}
+		}
+	}
+
+
+ontology
+	term_definitions = <
+		["de"] = <
+			items = <
+				["at0000"] = <
+					text = <"Schwangerschaftsuntersuchung">
+					description = <"Schwangerschaftsuntersuchung">
+				>
+				["at0001"] = <
+					text = <"ItemTree">
+					description = <"@ internal @">
+				>
+				["at0002"] = <
+					text = <"Datum der Untersuchung">
+					description = <"*">
+				>
+				["at0003"] = <
+					text = <"Schwangerschaftswoche">
+					description = <"*">
+				>
+				["at0004"] = <
+					text = <"Korrigierte Schwangerschafswoche">
+					description = <"*">
+				>
+			>
+		>
+		["en"] = <
+			items = <
+				["at0000"] = <
+					text = <"Pregnancy Check-up">
+					description = <"*Schwangerschaftsuntersuchung (de)">
+				>
+				["at0001"] = <
+					text = <"ItemTree">
+					description = <"@ internal @">
+				>
+				["at0002"] = <
+					text = <"*Datum der Untersuchung (de)">
+					description = <"*">
+				>
+				["at0003"] = <
+					text = <"*Schwangerschaftswoche (de)">
+					description = <"*">
+				>
+				["at0004"] = <
+					text = <"*Korrigierte Schwangerschafswoche (de)">
+					description = <"*">
+				>
+			>
+		>
+	>

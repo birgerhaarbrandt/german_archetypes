@@ -1,0 +1,145 @@
+﻿archetype (adl_version=1.4; uid=dd910eb4-d58a-4d7f-ae43-722aff9d8cce)
+	openEHR-EHR-OBSERVATION.screening_mukoviszidose.v0
+
+concept
+	[at0000]	-- Screening_Mukoviszidose
+language
+	original_language = <[ISO_639-1::de]>
+description
+	original_author = <
+		["name"] = <"Birger Haarbrandt">
+		["organisation"] = <"HiGHmed">
+		["email"] = <"birger.haarbrandt@plri.de">
+		["date"] = <"2019-06-12">
+	>
+	details = <
+		["de"] = <
+			language = <[ISO_639-1::de]>
+			purpose = <"Screening Mukoviszidose vorhanden">
+			use = <"">
+			misuse = <"">
+			copyright = <"© HiGHmed">
+		>
+	>
+	lifecycle_state = <"in_development">
+	other_contributors = <>
+	other_details = <
+		["licence"] = <"This work is licensed under the Creative Commons Attribution-ShareAlike 3.0 License. To view a copy of this license, visit http://creativecommons.org/licenses/by-sa/3.0/.">
+		["custodian_organisation"] = <"HiGHmed">
+		["original_namespace"] = <"org.highmed">
+		["custodian_namespace"] = <"org.highmed">
+		["original_publisher"] = <"HiGHmed">
+		["MD5-CAM-1.0.1"] = <"72677142CE2E08C7180C46B634045DD4">
+		["build_uid"] = <"2dcd6c1f-f891-4c95-87c5-8754983d5b19">
+		["revision"] = <"0.0.1-alpha">
+	>
+
+definition
+	OBSERVATION[at0000] matches {	-- Screening_Mukoviszidose
+		data matches {
+			HISTORY[at0001] matches {	-- History
+				events cardinality matches {1..*; unordered} matches {
+					EVENT[at0002] occurrences matches {0..*} matches {	-- Any event
+						data matches {
+							ITEM_TREE[at0003] matches {	-- Tree
+								items cardinality matches {0..*; unordered} matches {
+									ELEMENT[at0004] occurrences matches {0..1} matches {	-- Untersuchungsdatum
+										value matches {
+											DV_DATE_TIME matches {*}
+										}
+									}
+									ELEMENT[at0005] occurrences matches {0..1} matches {	-- Ergebnis
+										value matches {
+											DV_TEXT matches {*}
+										}
+									}
+									ELEMENT[at0007] occurrences matches {0..1} matches {	-- Veranlassung Abklärung
+										value matches {
+											DV_BOOLEAN matches {
+												value matches {True, False}
+											}
+										}
+									}
+									ELEMENT[at0009] occurrences matches {0..1} matches {	-- Abklärungsdatum
+										value matches {
+											DV_DATE_TIME matches {*}
+										}
+									}
+									ELEMENT[at0010] occurrences matches {0..1} matches {	-- Screeninglabor
+										value matches {
+											DV_TEXT matches {*}
+										}
+									}
+									ELEMENT[at0011] occurrences matches {0..1} matches {	-- Patientennummer
+										value matches {
+											DV_TEXT matches {*}
+										}
+									}
+									ELEMENT[at0012] occurrences matches {0..1} matches {	-- Eltern lehnen Untersuchung ab
+										value matches {
+											DV_BOOLEAN matches {
+												value matches {True, False}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+
+ontology
+	term_definitions = <
+		["de"] = <
+			items = <
+				["at0000"] = <
+					text = <"Screening_Mukoviszidose">
+					description = <"Screening_Mukoviszidose">
+				>
+				["at0001"] = <
+					text = <"History">
+					description = <"@ internal @">
+				>
+				["at0002"] = <
+					text = <"Any event">
+					description = <"*">
+				>
+				["at0003"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0004"] = <
+					text = <"Untersuchungsdatum">
+					description = <"*">
+				>
+				["at0005"] = <
+					text = <"Ergebnis">
+					description = <"*">
+				>
+				["at0007"] = <
+					text = <"Veranlassung Abklärung">
+					description = <"*">
+				>
+				["at0009"] = <
+					text = <"Abklärungsdatum">
+					description = <"*">
+				>
+				["at0010"] = <
+					text = <"Screeninglabor">
+					description = <"*">
+				>
+				["at0011"] = <
+					text = <"Patientennummer">
+					description = <"*">
+				>
+				["at0012"] = <
+					text = <"Eltern lehnen Untersuchung ab">
+					description = <"*">
+				>
+			>
+		>
+	>

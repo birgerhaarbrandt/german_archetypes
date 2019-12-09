@@ -1,0 +1,163 @@
+﻿archetype (adl_version=1.4; uid=f1168bbb-2142-44d1-9458-1f077d767cd3)
+	openEHR-EHR-OBSERVATION.erweitertes_neugeborenen_screening.v0
+
+concept
+	[at0000]	-- Erweitertes_Neugeborenen_Screening
+language
+	original_language = <[ISO_639-1::de]>
+description
+	original_author = <
+		["name"] = <"Birger Haarbrandt">
+		["organisation"] = <"HiGHmed">
+		["email"] = <"birger.haarbrandt@plri.de">
+		["date"] = <"2019-06-12">
+	>
+	details = <
+		["de"] = <
+			language = <[ISO_639-1::de]>
+			purpose = <"Erweitertes Neugeborenen-Screening">
+			use = <"">
+			misuse = <"">
+			copyright = <"© HiGHmed">
+		>
+	>
+	lifecycle_state = <"in_development">
+	other_contributors = <>
+	other_details = <
+		["licence"] = <"This work is licensed under the Creative Commons Attribution-ShareAlike 3.0 License. To view a copy of this license, visit http://creativecommons.org/licenses/by-sa/3.0/.">
+		["custodian_organisation"] = <"HiGHmed">
+		["original_namespace"] = <"org.highmed">
+		["custodian_namespace"] = <"org.highmed">
+		["original_publisher"] = <"HiGHmed">
+		["MD5-CAM-1.0.1"] = <"2A179D060D9DEE65F3F32EF7741F91D7">
+		["build_uid"] = <"e8e8c7a7-46a9-4f39-afc3-fbb279095fad">
+		["revision"] = <"0.0.1-alpha">
+	>
+
+definition
+	OBSERVATION[at0000] matches {	-- Erweitertes_Neugeborenen_Screening
+		data matches {
+			HISTORY[at0001] matches {	-- History
+				events cardinality matches {1..*; unordered} matches {
+					EVENT[at0002] occurrences matches {0..*} matches {	-- Any event
+						data matches {
+							ITEM_TREE[at0003] matches {	-- Tree
+								items cardinality matches {0..*; unordered} matches {
+									ELEMENT[at0004] occurrences matches {0..1} matches {	-- Untersuchungsdatum
+										value matches {
+											DV_DATE_TIME matches {*}
+										}
+									}
+									ELEMENT[at0005] occurrences matches {0..1} matches {	-- Ergebnis
+										value matches {
+											DV_TEXT matches {*}
+										}
+									}
+									ELEMENT[at0011] occurrences matches {0..1} matches {	-- Dringlichkeit einer zweiten Laboruntersuchung
+										value matches {
+											DV_BOOLEAN matches {
+												value matches {True, False}
+											}
+										}
+									}
+									ELEMENT[at0012] occurrences matches {0..1} matches {	-- Durchführungsdatum zweite Laboruntersuchung
+										value matches {
+											DV_DATE_TIME matches {*}
+										}
+									}
+									ELEMENT[at0013] occurrences matches {0..1} matches {	-- Ergebnis zweite Laboruntersuchung
+										value matches {
+											DV_TEXT matches {*}
+										}
+									}
+									ELEMENT[at0015] occurrences matches {0..1} matches {	-- Durchführungsdatum Kontrolle
+										value matches {
+											DV_DATE_TIME matches {*}
+										}
+									}
+									ELEMENT[at0008] occurrences matches {0..1} matches {	-- Screeninglabor
+										value matches {
+											DV_TEXT matches {*}
+										}
+									}
+									ELEMENT[at0009] occurrences matches {0..1} matches {	-- Patientennummer
+										value matches {
+											DV_TEXT matches {*}
+										}
+									}
+									ELEMENT[at0010] occurrences matches {0..1} matches {	-- Eltern lehnen Untersuchung ab
+										value matches {
+											DV_BOOLEAN matches {
+												value matches {True, False}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+
+ontology
+	term_definitions = <
+		["de"] = <
+			items = <
+				["at0000"] = <
+					text = <"Erweitertes_Neugeborenen_Screening">
+					description = <"Erweitertes_Neugeborenen_Screening">
+				>
+				["at0001"] = <
+					text = <"History">
+					description = <"@ internal @">
+				>
+				["at0002"] = <
+					text = <"Any event">
+					description = <"*">
+				>
+				["at0003"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0004"] = <
+					text = <"Untersuchungsdatum">
+					description = <"*">
+				>
+				["at0005"] = <
+					text = <"Ergebnis">
+					description = <"*">
+				>
+				["at0008"] = <
+					text = <"Screeninglabor">
+					description = <"*">
+				>
+				["at0009"] = <
+					text = <"Patientennummer">
+					description = <"*">
+				>
+				["at0010"] = <
+					text = <"Eltern lehnen Untersuchung ab">
+					description = <"*">
+				>
+				["at0011"] = <
+					text = <"Dringlichkeit einer zweiten Laboruntersuchung">
+					description = <"*">
+				>
+				["at0012"] = <
+					text = <"Durchführungsdatum zweite Laboruntersuchung">
+					description = <"*">
+				>
+				["at0013"] = <
+					text = <"Ergebnis zweite Laboruntersuchung">
+					description = <"*">
+				>
+				["at0015"] = <
+					text = <"Durchführungsdatum Kontrolle">
+					description = <"Es wird nur eine Kontrolluntersuchung bei auffälligem Befund durchgeführt.">
+				>
+			>
+		>
+	>

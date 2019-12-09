@@ -1,0 +1,194 @@
+﻿archetype (adl_version=1.4; uid=881ece30-0066-4580-9b09-5c66559aa527)
+	openEHR-EHR-EVALUATION.schwangerschaftsanamnese.v0
+
+concept
+	[at0000]	-- Schwangerschaftsanamnese
+language
+	original_language = <[ISO_639-1::de]>
+description
+	original_author = <
+		["name"] = <"Birger Haarbandt">
+		["organisation"] = <"HiGHmed">
+		["email"] = <"birger.haarbrandt@plri.de">
+		["date"] = <"2019-06-13">
+	>
+	details = <
+		["de"] = <
+			language = <[ISO_639-1::de]>
+			purpose = <"Anamnese in der Schwangerschaft">
+			use = <"">
+			misuse = <"">
+			copyright = <"© HiGHmed">
+		>
+	>
+	lifecycle_state = <"in_development">
+	other_contributors = <>
+	other_details = <
+		["licence"] = <"This work is licensed under the Creative Commons Attribution-ShareAlike 3.0 License. To view a copy of this license, visit http://creativecommons.org/licenses/by-sa/3.0/.">
+		["custodian_organisation"] = <"HiGHmed">
+		["original_namespace"] = <"org.highmed">
+		["custodian_namespace"] = <"org.highmed">
+		["original_publisher"] = <"HiGHmed">
+		["MD5-CAM-1.0.1"] = <"47138A4DF6673EF480D89835BE57EA7E">
+		["build_uid"] = <"7ea02985-6f29-44f2-a634-690d2cb21259">
+		["revision"] = <"0.0.1-alpha">
+	>
+
+definition
+	EVALUATION[at0000] matches {	-- Schwangerschaftsanamnese
+		data matches {
+			ITEM_TREE[at0001] matches {	-- ItemTree
+				items cardinality matches {0..*; unordered} matches {
+					ELEMENT[at0002] occurrences matches {0..1} matches {	-- Diabetes mellitus
+						value matches {
+							DV_BOOLEAN matches {
+								value matches {True, False}
+							}
+						}
+					}
+					ELEMENT[at0003] occurrences matches {0..1} matches {	-- Gestationsdiabetes
+						value matches {
+							DV_BOOLEAN matches {
+								value matches {True, False}
+							}
+						}
+					}
+					ELEMENT[at0004] occurrences matches {0..1} matches {	-- Dauermedikation
+						value matches {
+							DV_BOOLEAN matches {
+								value matches {True, False}
+							}
+						}
+					}
+					ELEMENT[at0005] occurrences matches {0..1} matches {	-- Infektionen in der Schwangerschaft (akut/chronisch)
+						value matches {
+							DV_BOOLEAN matches {
+								value matches {True, False}
+							}
+						}
+					}
+					ELEMENT[at0006] occurrences matches {0..1} matches {	-- Antikörper-Suchtest positiv
+						value matches {
+							DV_BOOLEAN matches {
+								value matches {True, False}
+							}
+						}
+					}
+					ELEMENT[at0007] occurrences matches {0..1} matches {	-- B-Streptokokken-Status der Mutter positiv
+						value matches {
+							DV_BOOLEAN matches {
+								value matches {True, False}
+							}
+						}
+					}
+					ELEMENT[at0008] occurrences matches {0..1} matches {	-- Mehrlingsschwangerschaft
+						value matches {
+							DV_BOOLEAN matches {
+								value matches {True, False}
+							}
+						}
+					}
+					ELEMENT[at0009] occurrences matches {0..1} matches {	-- (Poly-)Hydramnion
+						value matches {
+							DV_BOOLEAN matches {
+								value matches {True, False}
+							}
+						}
+					}
+					ELEMENT[at0010] occurrences matches {0..1} matches {	-- Oligohydramnion
+						value matches {
+							DV_BOOLEAN matches {
+								value matches {True, False}
+							}
+						}
+					}
+					ELEMENT[at0011] occurrences matches {0..1} matches {	-- besondere psychische Belastungen
+						value matches {
+							DV_BOOLEAN matches {
+								value matches {True, False}
+							}
+						}
+					}
+					ELEMENT[at0012] occurrences matches {0..1} matches {	-- besondere soziale Belastungen
+						value matches {
+							DV_BOOLEAN matches {
+								value matches {True, False}
+							}
+						}
+					}
+					ELEMENT[at0013] occurrences matches {0..1} matches {	-- Abusus
+						value matches {
+							DV_BOOLEAN matches {
+								value matches {True, False}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+
+ontology
+	term_definitions = <
+		["de"] = <
+			items = <
+				["at0000"] = <
+					text = <"Schwangerschaftsanamnese">
+					description = <"Schwangerschaftsanamnese">
+				>
+				["at0001"] = <
+					text = <"ItemTree">
+					description = <"@ internal @">
+				>
+				["at0002"] = <
+					text = <"Diabetes mellitus">
+					description = <"*">
+				>
+				["at0003"] = <
+					text = <"Gestationsdiabetes">
+					description = <"*">
+				>
+				["at0004"] = <
+					text = <"Dauermedikation">
+					description = <"*">
+				>
+				["at0005"] = <
+					text = <"Infektionen in der Schwangerschaft (akut/chronisch)">
+					description = <"*">
+				>
+				["at0006"] = <
+					text = <"Antikörper-Suchtest positiv">
+					description = <"*">
+				>
+				["at0007"] = <
+					text = <"B-Streptokokken-Status der Mutter positiv">
+					description = <"*">
+				>
+				["at0008"] = <
+					text = <"Mehrlingsschwangerschaft">
+					description = <"*">
+				>
+				["at0009"] = <
+					text = <"(Poly-)Hydramnion">
+					description = <"*">
+				>
+				["at0010"] = <
+					text = <"Oligohydramnion">
+					description = <"*">
+				>
+				["at0011"] = <
+					text = <"besondere psychische Belastungen">
+					description = <"*">
+				>
+				["at0012"] = <
+					text = <"besondere soziale Belastungen">
+					description = <"*">
+				>
+				["at0013"] = <
+					text = <"Abusus">
+					description = <"*">
+				>
+			>
+		>
+	>

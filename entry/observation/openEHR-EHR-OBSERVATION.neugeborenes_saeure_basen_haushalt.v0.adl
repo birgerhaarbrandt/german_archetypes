@@ -1,0 +1,105 @@
+﻿archetype (adl_version=1.4; uid=b95213b0-63b6-4880-a67e-7c284d604ff2)
+	openEHR-EHR-OBSERVATION.neugeborenes_saeure_basen_haushalt.v0
+
+concept
+	[at0000]	-- Neugeborenes_Saeure_Basen_Haushalt
+language
+	original_language = <[ISO_639-1::de]>
+description
+	original_author = <
+		["name"] = <"Birger Haarbrandt">
+		["organisation"] = <"HiGHmed">
+		["email"] = <"birger.haarbrandt@plri.de">
+		["date"] = <"2019-06-07">
+	>
+	details = <
+		["de"] = <
+			language = <[ISO_639-1::de]>
+			purpose = <"Dokumentation Säure-Basen-Haushalt">
+			use = <"">
+			misuse = <"">
+			copyright = <"© HiGHmed">
+		>
+	>
+	lifecycle_state = <"in_development">
+	other_contributors = <>
+	other_details = <
+		["licence"] = <"This work is licensed under the Creative Commons Attribution-ShareAlike 3.0 License. To view a copy of this license, visit http://creativecommons.org/licenses/by-sa/3.0/.">
+		["custodian_organisation"] = <"HiGHmed">
+		["original_namespace"] = <"org.highmed">
+		["custodian_namespace"] = <"org.highmed">
+		["original_publisher"] = <"HiGHmed">
+		["MD5-CAM-1.0.1"] = <"0398499D54DC53B47FA7CCE954EB540E">
+		["build_uid"] = <"4803e93c-41ea-4146-9c7b-98193a0e0b9d">
+		["revision"] = <"0.0.1-alpha">
+	>
+
+definition
+	OBSERVATION[at0000] matches {	-- Neugeborenes_Saeure_Basen_Haushalt
+		data matches {
+			HISTORY[at0001] matches {	-- History
+				events cardinality matches {1..*; unordered} matches {
+					EVENT[at0002] occurrences matches {0..*} matches {	-- Any event
+						data matches {
+							ITEM_TREE[at0003] matches {	-- Tree
+								items cardinality matches {0..*; unordered} matches {
+									ELEMENT[at0006] occurrences matches {0..1} matches {	-- pH-Wert
+										value matches {
+											C_DV_QUANTITY <
+											>
+										}
+									}
+									ELEMENT[at0007] occurrences matches {0..1} matches {	-- Basenüberschuss
+										value matches {
+											C_DV_QUANTITY <
+											>
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+		protocol matches {
+			ITEM_TREE[at0008] matches {*}
+		}
+	}
+
+
+ontology
+	term_definitions = <
+		["de"] = <
+			items = <
+				["at0000"] = <
+					text = <"Neugeborenes_Saeure_Basen_Haushalt">
+					description = <"Neugeborenes_Saeure_Basen_Haushalt">
+				>
+				["at0001"] = <
+					text = <"History">
+					description = <"@ internal @">
+				>
+				["at0002"] = <
+					text = <"Any event">
+					description = <"*">
+				>
+				["at0003"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0006"] = <
+					text = <"pH-Wert">
+					description = <"*">
+				>
+				["at0007"] = <
+					text = <"Basenüberschuss">
+					description = <"*">
+				>
+				["at0008"] = <
+					text = <"ItemTree">
+					description = <"@ internal @">
+				>
+			>
+		>
+	>

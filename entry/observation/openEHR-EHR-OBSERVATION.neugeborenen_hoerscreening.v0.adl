@@ -1,0 +1,177 @@
+﻿archetype (adl_version=1.4; uid=a3c83e82-278e-4137-9192-692fb3e68012)
+	openEHR-EHR-OBSERVATION.neugeborenen_hoerscreening.v0
+
+concept
+	[at0000]	-- Neugeborenen_Hoerscreening
+language
+	original_language = <[ISO_639-1::de]>
+description
+	original_author = <
+		["name"] = <"Birger Haarbrandt">
+		["organisation"] = <"HiGHmed">
+		["email"] = <"birger.haarbrandt@plri.de">
+		["date"] = <"2019-06-12">
+	>
+	details = <
+		["de"] = <
+			language = <[ISO_639-1::de]>
+			purpose = <"Hörscreening eines Neugeborenen">
+			use = <"">
+			misuse = <"">
+			copyright = <"© HiGHmed">
+		>
+	>
+	lifecycle_state = <"in_development">
+	other_contributors = <>
+	other_details = <
+		["licence"] = <"This work is licensed under the Creative Commons Attribution-ShareAlike 3.0 License. To view a copy of this license, visit http://creativecommons.org/licenses/by-sa/3.0/.">
+		["custodian_organisation"] = <"HiGHmed">
+		["original_namespace"] = <"org.highmed">
+		["custodian_namespace"] = <"org.highmed">
+		["original_publisher"] = <"HiGHmed">
+		["MD5-CAM-1.0.1"] = <"4DF39B1CA1BF52D29A93E9688396C0E2">
+		["build_uid"] = <"dc12cc4a-7c60-40da-bbd7-bd2c6c2ed9e6">
+		["revision"] = <"0.0.1-alpha">
+	>
+
+definition
+	OBSERVATION[at0000] matches {	-- Neugeborenen_Hoerscreening
+		data matches {
+			HISTORY[at0001] matches {	-- History
+				events cardinality matches {1..*; unordered} matches {
+					EVENT[at0002] occurrences matches {0..*} matches {	-- Any event
+						data matches {
+							ITEM_TREE[at0003] matches {	-- Tree
+								items cardinality matches {0..*; unordered} matches {
+									ELEMENT[at0004] occurrences matches {0..1} matches {	-- Erstuntersuchung Durchführungsdatum
+										value matches {
+											DV_DATE_TIME matches {*}
+										}
+									}
+									ELEMENT[at0006] occurrences matches {0..1} matches {	-- TEOAE
+										value matches {
+											DV_TEXT matches {*}
+										}
+									}
+									ELEMENT[at0007] occurrences matches {0..1} matches {	-- AABR
+										value matches {
+											DV_TEXT matches {*}
+										}
+									}
+									ELEMENT[at0005] occurrences matches {0..1} matches {	-- Kontroll-AABR Durchführungsdatum
+										value matches {
+											DV_DATE_TIME matches {*}
+										}
+									}
+									ELEMENT[at0016] occurrences matches {0..1} matches {	-- Kontroll-AABR Ergebnis
+										value matches {
+											DV_TEXT matches {*}
+										}
+									}
+									ELEMENT[at0010] occurrences matches {0..1} matches {	-- Pädaudiologische Diagnostik Veranlassungsdatum
+										value matches {
+											DV_DATE_TIME matches {*}
+										}
+									}
+									ELEMENT[at0011] occurrences matches {0..1} matches {	-- Pädaudiologische Diagnostik Durchführungsdatum
+										value matches {
+											DV_DATE_TIME matches {*}
+										}
+									}
+									ELEMENT[at0012] occurrences matches {0..1} matches {	-- Pädaudiologische Diagnostik Ergebnis
+										value matches {
+											DV_TEXT matches {*}
+										}
+									}
+									ELEMENT[at0014] occurrences matches {0..1} matches {	-- Besprechungsdatum
+										value matches {
+											DV_DATE_TIME matches {*}
+										}
+									}
+									ELEMENT[at0015] occurrences matches {0..1} matches {	-- Eltern lehnen Untersuchung ab
+										value matches {
+											DV_BOOLEAN matches {
+												value matches {True, False}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+		protocol matches {
+			ITEM_TREE[at0008] matches {*}
+		}
+	}
+
+
+ontology
+	term_definitions = <
+		["de"] = <
+			items = <
+				["at0000"] = <
+					text = <"Neugeborenen_Hoerscreening">
+					description = <"Neugeborenen_Hoerscreening">
+				>
+				["at0001"] = <
+					text = <"History">
+					description = <"@ internal @">
+				>
+				["at0002"] = <
+					text = <"Any event">
+					description = <"*">
+				>
+				["at0003"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0004"] = <
+					text = <"Erstuntersuchung Durchführungsdatum">
+					description = <"*">
+				>
+				["at0005"] = <
+					text = <"Kontroll-AABR Durchführungsdatum">
+					description = <"Sie wird nur bei auffälligem Erstbefund durchgeführt. In der Regel bis U2.">
+				>
+				["at0006"] = <
+					text = <"TEOAE">
+					description = <"*">
+				>
+				["at0007"] = <
+					text = <"AABR">
+					description = <"*">
+				>
+				["at0008"] = <
+					text = <"ItemTree">
+					description = <"@ internal @">
+				>
+				["at0010"] = <
+					text = <"Pädaudiologische Diagnostik Veranlassungsdatum">
+					description = <"*">
+				>
+				["at0011"] = <
+					text = <"Pädaudiologische Diagnostik Durchführungsdatum">
+					description = <"In der Regel bis zur 12. Lebenswoche.">
+				>
+				["at0012"] = <
+					text = <"Pädaudiologische Diagnostik Ergebnis">
+					description = <"*">
+				>
+				["at0014"] = <
+					text = <"Besprechungsdatum">
+					description = <"Das Datum, an dem die Untersuchungsergebnisse und ggf. die erforderliche Therapie besprochen wurde.">
+				>
+				["at0015"] = <
+					text = <"Eltern lehnen Untersuchung ab">
+					description = <"*">
+				>
+				["at0016"] = <
+					text = <"Kontroll-AABR Ergebnis">
+					description = <"*">
+				>
+			>
+		>
+	>
